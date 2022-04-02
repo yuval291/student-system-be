@@ -14,7 +14,7 @@ import java.sql.Date;
 @Data
 @NoArgsConstructor
 @IdClass(CourseUserId.class)
-public class CourseUser implements Serializable {
+public class CourseStudent implements Serializable {
     @Id
     @Column(name = "student_id")
     private String studentId;

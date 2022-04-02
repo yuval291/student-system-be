@@ -1,18 +1,19 @@
-package com.example.login.models;
+package com.example.login.Response;
 
-import javax.persistence.Column;
 import java.io.Serializable;
 import java.util.Date;
 
 //DTO- DATA TRANSFER OBJECT
-public class CourseResponse implements Serializable {
+public class CourseStudentResponse implements Serializable {
     private String id;
     private String courseName;
     private Integer  grade;
     private Date startDate;
     private Date endDate;
-    public CourseResponse(){}
-    public CourseResponse(Integer grade, String courseName, String id , Date startDate, Date endDate) {
+
+    public CourseStudentResponse(){}
+
+    public CourseStudentResponse(Integer grade, String courseName, String id , Date startDate, Date endDate) {
         this.grade=grade;
         this.courseName=courseName;
         this.endDate=endDate;

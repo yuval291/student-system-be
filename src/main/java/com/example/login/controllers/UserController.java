@@ -1,14 +1,11 @@
 package com.example.login.controllers;
 
-import com.example.login.models.Course;
-import com.example.login.models.CourseResponse;
-import com.example.login.models.CourseUser;
-import com.example.login.models.User;
+import com.example.login.Response.CourseStudentResponse;
+import com.example.login.models.Student;
 import com.example.login.repo.CourseRepo;
 import com.example.login.repo.CourseUserRepo;
 import com.example.login.repo.UserRepo;
 import com.example.login.types.DeleteRequestObject;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/student")
@@ -38,13 +34,13 @@ public class UserController {
 
     @PostMapping("/getDetail")
     //ResponseEntity represents the whole HTTP response: status code, headers, and body
-    public ResponseEntity<User> getDetailUser(@RequestBody String userID){
-        User user=repo.findByUserId(userID);
+    public ResponseEntity<Student> getDetailUser(@RequestBody String userID){
+        Student user=repo.findByUserId(userID);
         return ResponseEntity.ok(user);
     }
 
         @PostMapping("/saveEdit")
-    public boolean saveEdit(@RequestBody User userEdit){
+    public boolean saveEdit(@RequestBody Student userEdit){
         String id= userEdit.getUserId();
         String first_name= userEdit.getFirst_name();
         String last_name= userEdit.getLast_name();
@@ -62,8 +58,8 @@ public class UserController {
     }
 
     @PostMapping("/getCourses")
-    public List<CourseResponse> getUserCourses(@RequestBody String userID) {
-        List<CourseResponse> coursesList = courseRepo.GetCoursesInfo(userID);
+    public List<CourseStudentResponse> getUserCourses(@RequestBody String userID) {
+        List<CourseStudentResponse> coursesList = courseRepo.GetCoursesInfo(userID);
         return  coursesList;
     }
 
