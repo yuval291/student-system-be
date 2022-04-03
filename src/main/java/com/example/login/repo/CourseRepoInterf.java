@@ -8,6 +8,4 @@ import java.util.List;
 public interface CourseRepoInterf {
     List<CourseStudentResponse> GetCoursesInfo (String userId);
 
-    @Transactional
-    Boolean DeleteCourse(String courseId, String userId);
 }
