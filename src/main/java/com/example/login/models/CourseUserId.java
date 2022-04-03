@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
-public class CourseUserId implements Serializable {
+class CourseUserId implements Serializable {
     private String studentId;
     private String courseId;
 }

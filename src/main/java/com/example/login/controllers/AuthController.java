@@ -1,6 +1,6 @@
 package com.example.login.controllers;
 
-import com.example.login.models.User;
+import com.example.login.models.Student;
 import com.example.login.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +16,13 @@ public class AuthController {
 
     @PostMapping("/login")
     //ResponseEntity represents the whole HTTP response: status code, headers, and body
-    public ResponseEntity<User> loginUser(@RequestBody User userData){
+    public ResponseEntity<Student> loginUser(@RequestBody Student userData){
         System.out.println(userData);
-        User user=repo.findByUserId(userData.getUserId());
+        Student user=repo.findByUserId(userData.getUserId());
         if(user.getPassword().equals(userData.getPassword())){
             return ResponseEntity.ok(user);
         }
 
-        return (ResponseEntity<User>) ResponseEntity.internalServerError();
+        return (ResponseEntity<Student>) ResponseEntity.internalServerError();
     }
 }
