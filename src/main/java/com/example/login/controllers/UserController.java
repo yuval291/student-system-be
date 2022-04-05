@@ -29,9 +29,6 @@ public class UserController {
     @Autowired
     private CourseUserRepo courseUserRepo;
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
     @PostMapping("/getDetail")
     //ResponseEntity represents the whole HTTP response: status code, headers, and body
     public ResponseEntity<Student> getDetailUser(@RequestBody String userID){
@@ -47,14 +44,12 @@ public class UserController {
         String email= userEdit.getEmail();
         String pass= userEdit.getPassword();
 
-        System.out.println(id+" "+pass+" "+first_name+" "+last_name+" "+email);
         int res= repo.saveEdit(id,pass,first_name,last_name,email);
-        System.out.println("res = "+ res);
-        if(res==1)
+        if(res==0)
         {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     @PostMapping("/getCourses")
@@ -67,10 +62,10 @@ public class UserController {
     public Boolean onDeleteCourse(@RequestBody DeleteRequestObject deleteReq) {
 
         int res =courseUserRepo.customDeleteByCourseAndUserIds(deleteReq.courseId,deleteReq.userId);
-        if(res==1){
-            return true;
+        if(res==0){
+            return false;
         }
-        return false;
+        return true;
     }
 
 

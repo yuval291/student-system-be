@@ -16,7 +16,7 @@ public class CourseRepoImpl implements CourseRepoInterf {
 
     @PersistenceContext
     private EntityManager entityManager;
-    String deleteQuery = "DELETE FROM CourseStudent  WHERE studentId=:studentId AND courseId=:courseId";
+
     String editQuery = "select new com.example.login.Response.CourseStudentResponse(b.grade,c.courseName,c.id, c.startDate,c.endDate) FROM  Student a INNER JOIN CourseStudent b ON a.userId= b.studentId INNER JOIN Course c ON c.id = b.courseId where a.userId = :id ";
 
     public List<CourseStudentResponse> GetCoursesInfo (String userId){

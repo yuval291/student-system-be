@@ -17,12 +17,10 @@ public class AuthController {
     @PostMapping("/login")
     //ResponseEntity represents the whole HTTP response: status code, headers, and body
     public ResponseEntity<Student> loginUser(@RequestBody Student userData){
-        System.out.println(userData);
         Student user=repo.findByUserId(userData.getUserId());
         if(user.getPassword().equals(userData.getPassword())){
             return ResponseEntity.ok(user);
         }
-
         return (ResponseEntity<Student>) ResponseEntity.internalServerError();
     }
 }

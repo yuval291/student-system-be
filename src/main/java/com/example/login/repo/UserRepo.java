@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 @Repository
 public interface UserRepo  extends CrudRepository<Student, String>{
 
-    Student findByUserId(String username);
+    Student findByUserId(String userId);
 
     @Modifying
     @Transactional
